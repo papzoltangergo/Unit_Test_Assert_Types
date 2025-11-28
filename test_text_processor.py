@@ -54,16 +54,34 @@ def test_count_words_greater_less():
 
 def test_count_words_empty_string():
     """7. Üres sztring bemenet ellenőrzése"""
-    pass
-
+    processor = TextProcessor()
+    result = processor.count_words("")
+    assert result == 0
 
 def test_is_palindrome_true_false():
     """8. Assert True/False - boolean ellenőrzés"""
-    pass
-
+    processor = TextProcessor()
+    assert processor.is_palindrome("anna") is True
+    assert processor.is_palindrome("hello") is False
+    assert processor.is_palindrome("") is False
+    assert processor.is_palindrome("A man a plan a canal Panama") is True
+    assert processor.is_palindrome("Indul a görög aludni") is True
 
 def test_remove_spaces_multiple_asserts():
     """9. Több assert egy tesztben"""
-    pass
+    processor = TextProcessor()
+    result = processor.remove_spaces("h e l l o   w o r l d")
+    assert result == "helloworld"
+    assert " " not in result
+    assert len(result) == 10
+    assert result.startswith("h")
+    assert result.endswith("d")
+    result_empty = processor.remove_spaces("")
+    assert result_empty == ""
+    result_no_spaces = processor.remove_spaces("nospace")
+    assert result_no_spaces == "nospace"
+    result_all_spaces = processor.remove_spaces("     ")
+    assert result_all_spaces == ""
+
 
 #ypython -m pytest .\Unit_Test_Assert_Types\test_text_processor.py -v
